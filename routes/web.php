@@ -38,6 +38,12 @@ Route::post('/daftar/mahasiswa/act' ,'Auth\AdminLogin@daftar_siswa_act');
 Route::get('/dashboard/admin' ,'Admin\AdminCtrl');
 
 
+// publikasi data
+Route::get('/admin/data-publikasi' ,'Admin\PubCtrl');
+Route::get('/admin/publikasi/edit/{id}' ,'Admin\PubCtrl@publikasi_edit');
+Route::post('/admin/publikasi/update' ,'Admin\PubCtrl@publikasi_update');
+Route::get('/admin/publikasi/delete/{id}' ,'Admin\PubCtrl@publikasi_delete');
+
 /*
 =========================== 
 		Review File
@@ -108,9 +114,14 @@ Route::get('/admin/pengguna/mahasiswa/delete/{id}' ,'Admin\PenggunaCtrl@mahasisw
 */
 Route::get('/dashboard/dosen' ,'Dospem\DsnCtrl');
 
-Route::get('/dosen/review-proposal/{id}' ,'Dospem\DsnCtrl@review_proposal');
-Route::post('/dosen/review-proposal/act' ,'Dospem\DsnCtrl@review_proposal_act');
+// publikasi data
+Route::get('/dosen/data-publikasi' ,'Dospem\DsnPubCtrl');
+Route::get('/dosen/publikasi/add' ,'Dospem\DsnPubCtrl@publikasi_add');
+Route::post('/dosen/publikasi/act' ,'Dospem\DsnPubCtrl@publikasi_act');
 
+Route::get('/dosen/publikasi/edit/{id}' ,'Dospem\DsnPubCtrl@publikasi_edit');
+Route::post('/dosen/publikasi/update' ,'Dospem\DsnPubCtrl@publikasi_update');
+Route::get('/dosen/publikasi/delete/{id}' ,'Dospem\DsnPubCtrl@publikasi_delete');
 
 
 
@@ -122,6 +133,28 @@ Route::post('/dosen/review-proposal/act' ,'Dospem\DsnCtrl@review_proposal_act');
 */
 Route::get('/dashboard/mahasiswa' ,'Mahasiswa\MhsCtrl');
 
-// daftar usulan
-Route::get('/mahasiswa/daftar-usulan' ,'Mahasiswa\DaftarUsCtrl');
+// publikasi data
+Route::get('/mahasiswa/data-publikasi' ,'Mahasiswa\MhsPubCtrl');
+Route::get('/mahasiswa/publikasi/add' ,'Mahasiswa\MhsPubCtrl@publikasi_add');
+Route::post('/mahasiswa/publikasi/act' ,'Mahasiswa\MhsPubCtrl@publikasi_act');
 
+Route::get('/mahasiswa/publikasi/edit/{id}' ,'Mahasiswa\MhsPubCtrl@publikasi_edit');
+Route::post('/mahasiswa/publikasi/update' ,'Mahasiswa\MhsPubCtrl@publikasi_update');
+Route::get('/mahasiswa/publikasi/delete/{id}' ,'Mahasiswa\MhsPubCtrl@publikasi_delete');
+
+
+
+// pengatuaran profile mahaiswa
+Route::get('/mahasiswa/profile' ,'Mahasiswa\MhsCtrl@profile');
+Route::get('/mahasiswa/profile/edit' ,'Mahasiswa\MhsCtrl@profile_edit');
+Route::post('/mahasiswa/profile/update' ,'Mahasiswa\MhsCtrl@profile_update');
+
+// profile admin
+Route::get('/admin/profile' ,'Admin\AdminCtrl@profile');
+Route::get('/admin/profile/edit' ,'Admin\AdminCtrl@profile_edit');
+Route::post('/admin/profile/update' ,'Admin\AdminCtrl@profile_update');
+
+// profile dosen
+Route::get('/dosen/profile' ,'Dospem\DsnCtrl@profile');
+Route::get('/dosen/profile/edit' ,'Dospem\DsnCtrl@profile_edit');
+Route::post('/dosen/profile/update' ,'Dospem\DsnCtrl@profile_update');

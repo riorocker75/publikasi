@@ -77,7 +77,7 @@
 
   <!-- /.content-wrapper -->
   <footer class="main-footer">
-    <strong>Copyright &copy; <?php echo date('Y')?><a href="#"> Sistem Bantuan Tugas Akhir Mahasiswa</a>.</strong>
+    <strong>Copyright &copy; <?php echo date('Y')?><a href="#"> Publikasi</a>.</strong>
     All rights reserved.   
   </footer>
 

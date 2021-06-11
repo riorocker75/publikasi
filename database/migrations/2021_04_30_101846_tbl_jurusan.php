@@ -16,7 +16,8 @@ class TblJurusan extends Migration
         if (!Schema::hasTable('jurusan')) {
             Schema::create('jurusan', function (Blueprint $table) {
                 $table->bigIncrements('id');
-                $table->string('nama',100);
+                $table->text('nama');
+                $table->text('slug')->nullable();
             });
         }
     }

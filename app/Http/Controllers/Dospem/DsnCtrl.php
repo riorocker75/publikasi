@@ -13,12 +13,11 @@ use App\Model\Admin;
 use App\Model\Mahasiswa;
 use App\Model\Dosen;
 use App\Model\Pengguna;
-use App\Model\KategoriBantuan;
-use App\Model\JadwalKegiatan;
-use App\Model\Laporan;
-use App\Model\UnggahRek;
+use App\Model\Kategori;
+use App\Model\Jurusan;
+use App\Model\Prodi;
+use App\Model\Publikasi;
 
-use App\Model\Usulan;
 class DsnCtrl extends Controller
 {
     public function __construct()
@@ -41,21 +40,57 @@ class DsnCtrl extends Controller
     }
 
 
-    function review_proposal($id){
-        $data=Usulan::where('id',$id)->get();
-        return view('dospem.review_proposal',[
-            'data' => $data
-        ]);
+    function profile(){
+        return view('dospem.profileData'); 
+
     }
+    function profile_edit(){
+        return view('dospem.profileEdit'); 
+    }
+    function profile_update(Request $request){
+        $nidn= Session::get('ds_username');
 
-    
-    function review_proposal_act(Request $request){
-        $id=$request->sumber;
-
-        DB::table('usulan')->where('id',$id)->update([
-            'status' => '2',
+        $this->validate($request, [
+            'nama' => 'required',
+            'telp' => 'max:10'
         ]);
-        return redirect('/dashboard/dosen')->with('alert-success','Data telah diubah');
+        $request->validate([
+            'avatar' => 'file|image|mimes:jpeg,png,jpg|max:2048'
+           ]);
+            
+           $avatar= $request->file('avatar');
+
+           if($avatar != ""){
+                $inf_avatar =rand(10000,99999)."_".rand(1000,9999).".".$avatar->getClientOriginalExtension();
+                $tujuan_upload ='upload/user';
+        
+                $avatar->move($tujuan_upload,$inf_avatar);
+
+                $avatar_hapus=Dosen::where('nidn',$nidn)->first();
+                File::delete('upload/user/'.$avatar_hapus->avatar);
+    
+                Dosen::where('nidn',$nidn)->update([
+                  'avatar' => $inf_avatar
+               ]);
+           }
+           DB::table('dosen')->where('nidn',$nidn)->update([
+               'nama' =>$request->nama,
+               'pendidikan_terakhir' =>$request->pendidikan,
+               'id_jurusan' =>$request->jurusan,
+               'alamat' =>$request->alamat,
+               'telepon' =>$request->telp,
+               'email' =>$request->email
+           ]);
+
+           if($request->pass != "" ){
+                DB::table('pengguna')->where('username',$nidn)->update([
+                    'username' => $request->nidn,
+                    'password' => bcrypt($request->pass),
+                    'level' => '2',
+                    'status' => '1'
+                ]);
+            }
+            return redirect('/dosen/profile')->with('alert-success','Data telah diubah');
 
     }
 

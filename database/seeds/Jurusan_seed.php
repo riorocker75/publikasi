@@ -18,6 +18,8 @@ class Jurusan_seed extends Seeder
         Jurusan::create([
             'id' => 1,
             'nama' => 'Teknik Informatika & Komputer',
+            'slug' => 'teknik-informatika-komputer',
+
         ]);
     }
 }

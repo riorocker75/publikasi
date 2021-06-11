@@ -47,34 +47,7 @@
                     <tbody>
                         @foreach ($data as $dt)
                          
-                         @php
-                            $kat = \App\Model\KategoriBantuan::where('id', $dt->id_kategoriBantuan)->first();
-                            $mhs = \App\Model\Mahasiswa::where('nim',$dt->id_ketua)->first();
-                         @endphp   
-                    <tr>
-                        <td>{{$dt->judul}}</td>
-                        <td>{{$mhs->nama}}</td>
-                        <td>
-                          <b> {{ number_format($dt->biaya)}}<br></b>
-                        </td>
-
-                        <td>
-                            {{ $dt->tahun_usulan}} 
-                        </td>
-                      
-                        <td>
-                           <label class="badge badge-primary">{{ status_usulan($dt->status)}} </label> 
-                        </td>
-
-                        <td>
-                          <label class="badge badge-default"> <p>Menunggu persetujuan...</p> </label>
-                          {{-- buat logika jika dia sudah status didanai tamplikan tobol ini --}}
-                          <p> <a href="{{ url('/mahasiswa/daftar-usulan/unggah-rekening/'.$dt->id.'')}}" class="btn btn-block btn-outline-primary btn-sm">Unggah Data Rekening</a></p>
-                          <p> <a href="{{ url('/mahasiswa/daftar-usulan/unggah-kemajuan/'.$dt->id.'')}}" class="btn btn-block btn-outline-primary btn-sm">Unggah Laporan Kemajuan</a></p>
-                          <p> <a href="{{ url('/mahasiswa/daftar-usulan/unggah-akhir/'.$dt->id.'')}}" class="btn btn-block btn-outline-primary btn-sm">Unggah Laporan Akhir</a></p>
-
-     
-                        </td>
+                        
                     </tr>
                     @endforeach
 

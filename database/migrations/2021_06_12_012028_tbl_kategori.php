@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class TblProdi extends Migration
+class TblKategori extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class TblProdi extends Migration
      */
     public function up()
     {
-        if (!Schema::hasTable('prodi')) {
-            Schema::create('prodi', function (Blueprint $table) {
+        if (!Schema::hasTable('kategori')) {
+            Schema::create('kategori', function (Blueprint $table) {
                 $table->bigIncrements('id');
-                $table->integer('id_jurusan');
-                $table->string('nama',100);
+                $table->text('nama');
                 $table->text('slug')->nullable();
             });
         }
@@ -29,8 +28,7 @@ class TblProdi extends Migration
      * @return void
      */
     public function down()
-    {
-        Schema::dropIfExists('prodi');
-
+    { 
+       Schema::dropIfExists('kategori');
     }
 }

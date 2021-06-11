@@ -19,6 +19,8 @@ class Prodi_seed extends Seeder
             'id' => 1,
             'id_jurusan' => 1,
             'nama' => 'Teknik',
+            'slug' => 'teknik',
+
         ]);
     }
 }

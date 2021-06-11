@@ -11,11 +11,30 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="\" class="nav-link">Home</a>
+        @if (Session::get('login-adm'))
+        <a href="{{url('/dashboard/admin')}}" class="nav-link">Home</a>
+        @endif
+
+        @if (Session::get('login-ds'))
+        <a href="{{url('/dashboard/dosen')}}" class="nav-link">Home</a>
+        @endif
+
+        @if (Session::get('login-mh'))
+        <a href="{{url('/dashboard/mahasiswa')}}" class="nav-link">Home</a>
+        @endif
       </li>
+
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Panduan BTAM</a>
+
+        @if (Session::get('login-ds'))
+        <a href="{{url('/dosen/publikasi/add')}}" class="nav-link">Unggah Publikasi</a>
+        @endif
+
+        @if (Session::get('login-mh'))
+        <a href="{{url('/mahasiswa/publikasi/add')}}" class="nav-link">Unggah Publikasi</a>
+        @endif
       </li>
+     
     </ul>
 
     <!-- Right navbar links -->
@@ -27,7 +46,8 @@
         <a class="nav-link" data-toggle="dropdown" href="#">
           <div class="image" >
             <i class="fa fa-user" aria-hidden="true"></i>
-            tes
+            {{Session::get('nama')}}
+
           </div>
         
         </a>
@@ -37,9 +57,23 @@
            <i class="fas fa-sign-out-alt "></i> Logout
           </a>
 
-          <a href="" class="dropdown-item">
-            <i class="fas fa-sign-out-alt "></i> Pengaturan
-           </a>
+          @if (Session::get('login-adm'))
+          <a href="{{url('/admin/profile')}}" class="dropdown-item">
+            <i class="fas fa-sign-out-alt "></i> Profile 
+          </a>
+         @endif
+
+        @if (Session::get('login-ds'))
+          <a href="{{url('/dosen/profile')}}" class="dropdown-item">
+            <i class="fas fa-sign-out-alt "></i> Profile
+          </a>
+        @endif
+
+       @if (Session::get('login-mh'))
+       <a href="{{url('/mahasiswa/profile')}}" class="dropdown-item">
+         <i class="fas fa-sign-out-alt "></i> Profile
+       </a>
+       @endif
           
           <div class="dropdown-divider"></div>
         </div>

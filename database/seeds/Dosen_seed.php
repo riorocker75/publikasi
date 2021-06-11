@@ -49,16 +49,6 @@ class Dosen_seed extends Seeder
             'lvl' => '3'
 
         ]);
-        Dosen::create([
-            'nama' => 'sumarto',
-            'nidn' => '123355',
-            'id_jurusan' => '1',
-            'telepon' =>'0852765254',
-            'pendidikan_terakhir' => "S2",
-            'email' => "sumarto@gmail.com",
-            'alamat' => "Tanah Abang",
-            'lvl' => '3'
-
-        ]);
+     
     }
 }

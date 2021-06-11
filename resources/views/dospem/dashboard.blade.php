@@ -43,26 +43,9 @@
                     </thead>
                     <tbody>
                         @foreach ($data as $dt)
-                         
-                         @php
-                            $kat = \App\Model\KategoriBantuan::where('id', $dt->id_kategoriBantuan)->first();
-                            $mhs = \App\Model\Mahasiswa::where('nim',$dt->id_ketua)->first();
-                         @endphp   
-                    <tr>
-                        <td>{{$dt->judul}}</td>
-                        <td>{{$mhs->nama}}</td>
-                       
-
-                        <td>
-                            {{ $dt->tahun_usulan}} 
-                        </td>
                       
-                        <td>
-                           <label class="badge badge-primary">{{ status_usulan($dt->status)}} </label> 
-                        </td>
-                        <td>
-                            <a href="{{url('/dosen/review-proposal/'.$dt->id.'')}}">Review</a> 
-                         </td>
+                    <tr>
+                      
                     </tr>
                     @endforeach
 

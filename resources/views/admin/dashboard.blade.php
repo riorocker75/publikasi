@@ -25,14 +25,21 @@
       <div class="container-fluid">
         <!-- Info boxes -->
         <div class="row">
+          @php
+          $ds = \App\Model\Dosen::where('lvl',1)->count();
+          $mhs = \App\Model\Mahasiswa::count();
+          $pub = \App\Model\Publikasi::where('status','1')->count();
+          $jur = \App\Model\Jurusan::count();
+
+      @endphp
           <div class="col-12 col-sm-6 col-md-3">
             <div class="info-box">
               <span class="info-box-icon bg-info elevation-1"><i class="fas fa-user"></i></span>
               <div class="info-box-content">
-                <span class="info-box-text">Daftar Reviewer</span>
+                <span class="info-box-text">Dosen</span>
                 <span class="info-box-number">
-                  10
-                  <small>%</small>
+                  {{number_format($ds)}}
+                 
                 </span>
               </div>
               <!-- /.info-box-content -->
@@ -45,8 +52,8 @@
               <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-users"></i></span>
 
               <div class="info-box-content">
-                <span class="info-box-text">Daftar Dosen</span>
-                <span class="info-box-number">41</span>
+                <span class="info-box-text">Mahasiswa</span>
+                <span class="info-box-number">{{number_format($mhs)}}</span>
               </div>
               <!-- /.info-box-content -->
             </div>
@@ -62,8 +69,8 @@
               <span class="info-box-icon bg-success elevation-1"><i class="fas fa-info-circle"></i></span>
 
               <div class="info-box-content">
-                <span class="info-box-text">Daftar Bantuan</span>
-                <span class="info-box-number">760</span>
+                <span class="info-box-text">Publikasi</span>
+                <span class="info-box-number">{{number_format($pub)}}</span>
               </div>
               <!-- /.info-box-content -->
             </div>
@@ -75,8 +82,8 @@
               <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-university"></i></span>
 
               <div class="info-box-content">
-                <span class="info-box-text">Daftar Jurusan</span>
-                <span class="info-box-number">8</span>
+                <span class="info-box-text">Jurusan</span>
+                <span class="info-box-number">{{number_format($mhs)}}</span>
               </div>
               <!-- /.info-box-content -->
             </div>
@@ -92,7 +99,7 @@
             <!-- Default box -->
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Partisipan Kegiatan BTAM</h3>
+                <h3 class="card-title">Publikasi </h3>
                 <div class="card-tools">
                   <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
                     <i class="fas fa-minus"></i></button>
@@ -100,32 +107,7 @@
               </div>
               <div class="card-body">
                 <div class="row">
-                  <div class="col-sm-4 col-6">
-                    <div class="description-block border-right">
-                      <span class="description-percentage text-success">PENDIDIKAN D3</span>
-                      <h5 class="description-header">30</h5>
-                      <span class="description-text">TOTAL PENGUSUL TUGAS AKHIR</span>
-                    </div>
-                    <!-- /.description-block -->
-                  </div>
-                  <!-- /.col -->
-                  <div class="col-sm-4 col-6">
-                    <div class="description-block border-right">
-                      <span class="description-percentage text-warning">PENDIDIKAN D4</span>
-                      <h5 class="description-header">50</h5>
-                      <span class="description-text">TOTAL PENGUSUL SKRIPSI</span>
-                    </div>
-                    <!-- /.description-block -->
-                  </div>
-                  <!-- /.col -->
-                  <div class="col-sm-4 col-6">
-                    <div class="description-block" >
-                      <span class="description-percentage text-danger">PENDIDIKAN S2</span>
-                      <h5 class="description-header">1200</h5>
-                      <span class="description-text">TOTAL PENGUSUL TESIS</span>
-                    </div>
-                    <!-- /.description-block -->
-                  </div>
+                  
                 </div>
               </div>
               <!-- /.card-body -->
