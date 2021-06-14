@@ -24,43 +24,26 @@
     <section class="content">
       <div class="container-fluid">
         <!-- Info boxes -->
-        <div class="card">
-            
-            <div class="card-header">
-                <h3 class="card-title">Usulan Terkini</h3>
+          <div class="row">
+            <div class="col-12 col-sm-6 col-md-3">
+              <div class="info-box">
+                <span class="info-box-icon bg-info elevation-1"><i class="fas fa-book"></i></span>
+                <div class="info-box-content">
+                  <span class="info-box-text">Total Publikasi</span>
+                  <span class="info-box-number">
+                    @php
+                        $id=Session::get('ds_username');
+                        $rv = \App\Model\Publikasi::where('id_pengguna',$id)->count();
+                    @endphp
+                   
+                    <b>{{ $rv}}</b>
+                  </span>
                 </div>
-                <!-- /.card-header -->
-                <div class="card-body">
-                <table id="data1" class="table table-bordered table-striped">
-                    <thead>
-                    <tr>
-                        <th>Judul</th>
-                        <th>Nama Pengusul</th>
-                        <th>Tahun</th>
-                        <th>Status</th>
-                        <th>Aksi</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($data as $dt)
-                      
-                    <tr>
-                      
-                    </tr>
-                    @endforeach
-
-                    </tbody>
-                </table>
-                </div>
-                <!-- /.card-body -->
-     
-              <!-- /.card-body -->
-              <div class="card-footer">
-
+                <!-- /.info-box-content -->
               </div>
-              <!-- /.card-footer-->
+              <!-- /.info-box -->
             </div>
-            <!-- /.card -->
+
           </div>
         </div>
       </div>

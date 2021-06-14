@@ -32,11 +32,8 @@ class DsnCtrl extends Controller
     }
     public function __invoke(){
         $nidn=Session::get('ds_username');
-        $data= Usulan::where('id_dospem1',$nidn)
-                ->orWhere('id_dospem2',$nidn)->get();
-        return view('dospem.dashboard',[
-            'data' =>$data
-        ]);
+        
+        return view('dospem.dashboard');
     }
 
 

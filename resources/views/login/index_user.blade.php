@@ -38,11 +38,15 @@
           </div>
           <!-- /.col -->
         </div>
+        <div class="float-right" style="margin-top:10px;color:#ad1457;font-size:18px">
+          <a href="{{url('/daftar/mahasiswa')}}">Registrasi</a>
+        </div>
       </form>
  
 
       <!-- /.social-auth-links -->
     </div>
+   
     <!-- /.login-card-body -->
   </div>
 </div>

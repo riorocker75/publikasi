@@ -142,6 +142,8 @@ Route::get('/mahasiswa/publikasi/edit/{id}' ,'Mahasiswa\MhsPubCtrl@publikasi_edi
 Route::post('/mahasiswa/publikasi/update' ,'Mahasiswa\MhsPubCtrl@publikasi_update');
 Route::get('/mahasiswa/publikasi/delete/{id}' ,'Mahasiswa\MhsPubCtrl@publikasi_delete');
 
+Route::get('/mahasiswa/publikasi/ulang/{id}' ,'Mahasiswa\MhsPubCtrl@publikasi_ulang');
+Route::post('/mahasiswa/publikasi/ulang/update{id}' ,'Mahasiswa\MhsPubCtrl@publikasi_ulang_update');
 
 
 // pengatuaran profile mahaiswa

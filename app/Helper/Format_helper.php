@@ -391,23 +391,13 @@ function status_transfer($status){
             }
         }
 
-        function label_usulan($status){
+        function status_post($status){
             switch($status){
-                
                 case 1:
-                    echo "<label class='badge badge-secondary'>Diproses</label>";
+                    echo "<label class='badge badge-secondary'>DiReview</label>";
                 break;
                 case 2: 
-                    echo  "<label class='badge badge-primary'>Disetujui</label>";
-                break;
-                case 3: 
-                    echo  "<label class='badge badge-info'>Penilaian</label>";
-                break;
-                case 4: 
-                    echo  "<label class='badge badge-success'>Didanai</label>";
-                break;
-                case 5:
-                    echo "<label class='badge badge-danger'>Didanai</label>";
+                    echo  "<label class='badge badge-primary'>Publish</label>";
                 break;
                 default:
                 echo "Tidak ada status";
@@ -415,13 +405,13 @@ function status_transfer($status){
             }
         }
 
-        function status_biaya($status){
+        function status_post_user($status){
             switch($status){
-                case 0:
-                    echo "Belum Biayai";
-                break;
                 case 1:
-                    echo "Dibiayai";
+                    echo "<label class='badge badge-primary'>Dosen</label>";
+                break;
+                case 2: 
+                    echo  "<label class='badge badge-info'>Mahasiswa</label>";
                 break;
                 default:
                 echo "Tidak ada status";
@@ -429,19 +419,35 @@ function status_transfer($status){
             }
         }
 
-        function status_unggah($status){
+
+        function kategori_post($status){
             switch($status){
                 case 1:
-                    echo "Pencairan Dana";
+                    echo "Jurnal";
                 break;
-                case 2:
-                    echo "Laporan Kemajuan";
-                break;
-                case 3:
-                    echo "Laporan Akhir";
+                case 2: 
+                    echo  "Pencapaian";
                 break;
                 default:
                 echo "Tidak ada status";
             break;
             }
         }
+
+
+        
+        function status_berkas($status){
+            switch($status){
+                case 1:
+                    echo "Private";
+                break;
+                case 2: 
+                    echo  "Publik";
+                break;
+                default:
+                echo "Tidak ada status";
+            break;
+            }
+        }
+
+       

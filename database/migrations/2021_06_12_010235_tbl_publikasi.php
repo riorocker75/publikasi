@@ -24,13 +24,14 @@ class TblPublikasi extends Migration
                $table->text('penulis')->nullable();
                $table->text('jurusan')->nullable();
                $table->text('kata_kunci')->nullable();
+               $table->text('kk_slug')->nullable();
                $table->text('kategori')->nullable();
                $table->text('berkas')->nullable();
                $table->text('link')->nullable();
+               $table->text('status_berkas')->nullable()->comment('1=publish', '2=private');
                $table->text('status')->nullable();
                $table->text('status_post')->nullable()->comment('1=review, 2=publish');
                $table->text('status_user')->nullable()->comment('dosen =1', 'mahasiswa =2');
-
            }); 
         }
     }

@@ -44,6 +44,17 @@ class PubCtrl extends Controller
         ]);
     }
     function publikasi_update(Request $request){
+        $id= $request->sumber;
+        if($request->has('terima')){
+            DB::table('publikasi')->where('id',$id)->update([
+                'status_post' => '2'
+            ]);
+        }elseif($request->has('tolak')){
+            DB::table('publikasi')->where('id',$id)->update([
+                'status_post' => '3'
+            ]);
+        }
+        return redirect('/admin/data-publikasi')->with('alert-success','Publiakasi telah diupdate');
 
     }
     
