@@ -43,9 +43,9 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
                                 <?php $no=1;?>
                                 @foreach ($data as $dt)
+                            <tr>
                                 <td>{{ $no++}}</td>
         
                                 <td>{{$dt->judul}} </td>
@@ -59,8 +59,8 @@
                                         <a href="{{ url('/admin/publikasi/delete/'.$dt->id.'')}}" class="btn btn-danger"><i class="far fa-trash-alt"></i></a>
                                    
                                 </td>
-                                @endforeach
                             </tr>
+                            @endforeach
                             </tbody>
                         </table>
                       

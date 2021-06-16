@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/','Admin\AdminCtrl');
+Route::get('/','FronCtrl');
 
 
 /*
@@ -111,7 +111,7 @@ Route::get('/admin/pengguna/mahasiswa/delete/{id}' ,'Admin\PenggunaCtrl@mahasisw
 =========================== 
 		Dosen
 ===========================
-*/
+*/ 
 Route::get('/dashboard/dosen' ,'Dospem\DsnCtrl');
 
 // publikasi data
@@ -160,3 +160,17 @@ Route::post('/admin/profile/update' ,'Admin\AdminCtrl@profile_update');
 Route::get('/dosen/profile' ,'Dospem\DsnCtrl@profile');
 Route::get('/dosen/profile/edit' ,'Dospem\DsnCtrl@profile_edit');
 Route::post('/dosen/profile/update' ,'Dospem\DsnCtrl@profile_update');
+
+
+
+/* =========================== 
+		Front
+=========================== */
+
+// publikasi dosen
+
+Route::get('/publikasi-ilmiah/dosen' ,'FrontCtrl@publikasi_dosen');
+
+
+// publikasi mahasiswa
+Route::get('/publikasi-ilmiah/mahasiswa' ,'FrontCtrl@publikasi_mahasiswa');

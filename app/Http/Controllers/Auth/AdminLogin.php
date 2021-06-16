@@ -63,6 +63,8 @@ class AdminLogin extends Controller
                     Session::put('nama', $data_ds->nama);
                     Session::put('level', 2);
                     Session::put('login-ds',TRUE);
+                    Session::put('login',TRUE);
+
                     return redirect('/dashboard/dosen')->with('alert-success','Selamat Datang');
                 }else{
                     return redirect('/login/user')->with('alert-danger','Password atau NIDN, Salah !');
@@ -94,6 +96,8 @@ class AdminLogin extends Controller
                     Session::put('nama', $data_mh->nama);
                     Session::put('level', 4);
                     Session::put('login-mh',TRUE);
+                    Session::put('login',TRUE);
+
                     return redirect('/dashboard/mahasiswa')->with('alert-success','Selamat Datang Kembali');
                 }else{
                     return redirect('/login/user')->with('alert-danger','Password atau NIIM, Salah !');

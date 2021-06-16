@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
+use File;
 
 use Illuminate\Support\Str;
 
@@ -66,7 +67,7 @@ class DsnPubCtrl extends Controller
         $slug= Str::slug($request->judul, '-');
         $slug_kunci= Str::slug($request->kunci, '-');
 
-        DB::table('publikasi')->insert([
+      $simpan =  DB::table('publikasi')->insert([
             'judul' =>$request->judul,
             'slug' => $slug,
             'tgl' => $request->tgl,
@@ -82,6 +83,12 @@ class DsnPubCtrl extends Controller
             'status_berkas' => $request->status_berkas,
             'status_post' => '1',
             'status_user' => '1',
+        ]);
+        $lastid = DB::getPdo()->lastInsertId();
+        DB::table('taxonomy')->insert([
+            'post_id' => $lastid,
+            'jur_id' =>$request->jurusan,
+            'jenis' => '1'
         ]);
 
         return redirect('/dosen/data-publikasi')->with('alert-success','Publikasi Telah dikirimkan ');
@@ -127,7 +134,7 @@ class DsnPubCtrl extends Controller
         $slug= Str::slug($request->judul, '-');
         $slug_kunci= Str::slug($request->kunci, '-');
 
-        DB::table('publikasi')->insert([
+        $simpan = DB::table('publikasi')->where('id',$id)->update([
             'judul' =>$request->judul,
             'slug' => $slug,
             'tgl' => $request->tgl,
@@ -141,6 +148,10 @@ class DsnPubCtrl extends Controller
             'status_berkas' => $request->status_berkas,
         ]);
 
+        DB::table('taxonomy')->where('post_id',$id)->update([
+            'jur_id' =>$request->jurusan,
+            'jenis' => '1'
+        ]);
         return redirect('/dosen/data-publikasi')->with('alert-success','Data Berhasil diubah');
 
     }

@@ -19,8 +19,6 @@ class DatabaseSeeder extends Seeder
          $this->call(Jurusan_seed::class);
          $this->call(Prodi_seed::class);
          $this->call(Kategori_seed::class);
-    
-
-
+         $this->call(Option_seed::class);
     }
 }

@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 
 use Illuminate\Support\Str;
+use File;
 
 use App\Model\Admin;
 use App\Model\Mahasiswa;
@@ -59,6 +60,11 @@ class PubCtrl extends Controller
     }
     
     function publikasi_delete($id){
-        
+        $berkas_hapus=Publikasi::where('id',$id)->first();
+        File::delete('upload/berkas/'.$berkas_hapus->berkas);
+
+        Publikasi::where('id',$id)->delete();
+        return redirect('/admin/data-publikasi')->with('alert-success','Data Berhasil dihapus');
+
     }
 }

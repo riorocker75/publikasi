@@ -43,9 +43,9 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
                                 <?php $no=1;?>
                                 @foreach ($data as $dt)
+                            <tr>
                                 <td>{{ $no++}}</td>
         
                                 <td>{{$dt->judul}} </td>
@@ -62,8 +62,8 @@
                                     @endif
                                    
                                 </td>
-                                @endforeach
                             </tr>
+                            @endforeach
                             </tbody>
                         </table>
                       
